@@ -21,7 +21,7 @@
                 href="<?php echo $url; ?>/public/singUpForm.php"
                 style="text-decoration: none"
                 class="text-dark"
-                >Registrate</a
+                >Regístrate</a
               >
             </p>
             <p>
@@ -36,7 +36,7 @@
 
           <div class="col-md-4 col-lg-3 col-xl-3  mx-2 mt-3">
             <h5 class="mb-4 font-weight-bold" style="color: #f0a500">
-              Encuentranos
+              Encuéntranos
             </h5>
             <p>
               <!-- Facebook -->
@@ -87,20 +87,10 @@
  <!-- end body and html -->
 </body>
 
-<!-- loader -->
-<div id="loader" class="loader-container">
-    <img src="img/loadinfDEF.gif" alt="Cargando..." class="loader">
-</div>
-<!-- end loader -->
+
 </html>
 
 <!-- logica de carga -->
 <script>
-window.addEventListener('load', function() {
-    setTimeout(function() {
-        // Oculta el indicador de carga
-        document.getElementById('loader').style.display = 'none';
-    }, 1000); // Cambia 1000 a la cantidad de milisegundos que deseas que el indicador se muestre antes de desaparecer (por ejemplo, 3000 para 3 segundos).
-});
 
 </script>

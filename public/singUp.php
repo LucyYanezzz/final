@@ -15,19 +15,19 @@
         $errors = array();
         // verificar que los campos esten completos
         if (empty($name) OR empty($lastname) OR empty($mail) OR empty($phone) OR empty($password) OR empty($passwordRepeat)) {
-         array_push($errors,"Se deben de rellenar todos los campos");
+         array_push($errors,"<div class='alert alert-danger'>Se debe rellenar todos los campos.</div>");
         }
         // validar los emails
         if(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
-            array_push($errors,"Registra un email valido");
+            array_push($errors,"<div class='alert alert-danger'>Ingresa un correo electrónico válido.</div>");
         }
         // longitud de caracteres
         if (strlen($password)<8) {
-            array_push($errors,"Tu contrasena debe tener 8 caracteres minimo");
+            array_push($errors,"<div class='alert alert-danger'>La contraseña debe contener 8 caracteres.</div>");
         }
         // validacion de contrasena
         if ($password!==$passwordRepeat) {
-            array_push($errors,"La contrasena no coincide");
+            array_push($errors,"<div class='alert alert-danger'>La contraseña no coincide.</div>");
         }
         // no emails repetidos
         require_once "../admin/config/conex.php";
@@ -36,14 +36,14 @@
         // con esta funcion cuenta las filas que podrian tener el mismo email
         $rowCount = mysqli_num_rows($res);
         if ($rowCount>0) {
-         array_push($errors,"Ese email ya esta registrado!");
+         array_push($errors,"<div class='alert alert-danger'>Este correo electrónico ya está registrado.</div>");
         }
         // Verificar si se ha seleccionado una imagen de perfil
         if (isset($_FILES['profilePhoto']) && $_FILES['profilePhoto']['error'] === UPLOAD_ERR_OK) {
         $tempName = $_FILES['profilePhoto']['tmp_name'];
         $fileName = $_FILES['profilePhoto']['name'];
         // Definir la carpeta de destino donde se almacenará la imagen de perfil
-        $uploadDir ='../uploads/';
+        $uploadDir ='../admin/seccion/uploads/';
         $targetFilePath = $uploadDir . $fileName;
         // Mover el archivo temporal al directorio de destino
         if (move_uploaded_file($tempName, $targetFilePath)) {
@@ -66,7 +66,7 @@
             $destiny = '../files/' . $fileName;
             if (move_uploaded_file($pdfFile['tmp_name'], $destiny)) {
                 // El archivo se subió correctamente, guardo en la bd
-                echo "El archivo se subió correctamente.";
+                // echo "El archivo se subió correctamente.";
             } else {
                 echo "Hubo un error al subir el archivo.";
             }

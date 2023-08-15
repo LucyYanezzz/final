@@ -33,7 +33,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <link rel="stylesheet" href="animate.css">
     <!--font poppins-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,6 +44,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   </head>
   <body>
+
     <!--Header Inicio-->
     <header class="hd">
       <nav
@@ -113,7 +113,7 @@
                   <a class="nav-link" href="about.php">Sobre nosotros</a>
                 </li>
                 <li class="nav-item mx-1">
-                  <a class="nav-link" href="contact.php">Contactanos</a>
+                  <a class="nav-link" href="contact.php">Contáctanos</a>
                 </li>
               </ul>
               <hr />
@@ -138,7 +138,7 @@
                           style="background-color: white"
                           class="dropdown-item"
                           href="<?php echo $url;?>/public/singUpForm.php"
-                          >Registrate</a
+                          >Regístrate</a
                         >
                       </li>
                       <li>
@@ -154,14 +154,24 @@
                         <a
                           style="background-color: white"
                           class="dropdown-item"
-                          href="salones.php"
-                          >Ver salones</a
+                          href="anuncio.php"
+                          >Anúnciate en Ibenteu</a
                         >
                       </li>
                     </ul>
                   </li>
                 </ul>
               </div>
+              </ul>
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-translate"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="ingles/index.php">English</a>
+                    <a class="dropdown-item" href="index.php">Español</a>
+                </div>
+            </div>
             </div>
           </div>
         </div>

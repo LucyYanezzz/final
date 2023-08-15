@@ -1,3 +1,6 @@
+<?php    setcookie('alert_message', '', time() - 3600, '/'); 
+ $url="http://".$_SERVER['HTTP_HOST']."/integradora";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,16 +68,16 @@
                                 <div class="d-flex flex-row aling-items-center mb-4">
                                     <i class="bi bi-envelope-fill fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label"for="profilePhoto">E-mail:</label>
-                                    <input type="mail" name="mail" placeholder="E-mail"class="form-control"  required>
+                                    <label class="form-label"for="profilePhoto">Correo electrónico:</label>
+                                    <input type="mail" name="mail" placeholder="Correo electrónico"class="form-control"  required>
                                 </div>
                                 </div>
                                 <!-- input phone -->
                                 <div class="d-flex flex-row aling-items-center mb-4">
                                     <i class="bi bi-telephone-fill fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    <label class="form-label"for="profilePhoto">Telefono:</label>
-                                    <input type="tel" name="phone" placeholder="Telefono" class="form-control" required>
+                                    <label class="form-label"for="profilePhoto">Teléfono:</label>
+                                    <input type="tel" name="phone" placeholder="Teléfono" class="form-control" required>
                                 </div>
                                 </div>
                                 <!-- Campo para la imagen de perfil -->
@@ -90,7 +93,7 @@
                                     <i class="bi bi-postcard-fill fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
                                     <label class="form-label"for="ine">INE:</label>
-                                    <input type="file" name="ine" id="ine" class="form-control" accept=".pdf" required>
+                                    <input type="file" name="ine" id="ine" class="form-control" accept=".pdf">
                                     <div id="emailHelp" class="form-text">Es necesario subir su INE en pdf por cuestiones de seguridad</div>
                                 </div>
                                 </div>
@@ -138,7 +141,7 @@
     </div>
       <!-- boton login -->
       <div class="d-flex align-items-center justify-content-center pb-4">
-        <p class="mb-0 me-2">¿Ya estas registrado?</p>
+        <p class="mb-0 me-2">¿Ya estás registrado?</p>
         <button type="button" class="btn btn-outline-danger">
             <a href="../admin/template/loginForm.php" class="link-dark">
                 Login
@@ -186,10 +189,25 @@
         // mandamos un echo con el mensaje
         echo "<div class='alert alert-success'>$alertMessage</div>";
         // Eliminar la cookie
-        setcookie('alert_message', '', time() - 3600, '/');
+     
     }
     // incluimos la pagina del login
      include('singUp.php');
      ?>
 </body>
+<!-- loader -->
+<div id="loader" class="loader-container">
+    <img src="../img/loadinfDEF.gif" alt="Cargando..." class="loader">
+</div>
+<!-- end loader -->
 </html>
+
+<script>
+    window.addEventListener('load', function() {
+  setTimeout(function() {
+      // Oculta el indicador de carga
+      document.getElementById('loader').style.display = 'none';
+  }, 1000); 
+});
+
+</script>

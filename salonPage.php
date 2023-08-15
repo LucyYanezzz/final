@@ -5,62 +5,55 @@ include('admin/config/conex.php');
 if (isset($_GET['id'])) {
     $salonId = $_GET['id'];
 
-    // Realiza una consulta para obtener la información completa del salón
-    $querySalon = "SELECT * FROM events WHERE id_events = ?";
-    $stmtSalon = mysqli_stmt_init($cnx);
+            // Realiza una consulta para obtener la información completa del salón
+            $querySalon = "SELECT * FROM events WHERE id_events = ?";
+            $stmtSalon = mysqli_stmt_init($cnx);
 
-    if (mysqli_stmt_prepare($stmtSalon, $querySalon)) {
-        mysqli_stmt_bind_param($stmtSalon, "s", $salonId);  
-        mysqli_stmt_execute($stmtSalon);
-        $resSalon = mysqli_stmt_get_result($stmtSalon);
-        $salonDetalles = mysqli_fetch_assoc($resSalon);
-    } else {
-        echo "Error al preparar la consulta";
-    }
+            if (mysqli_stmt_prepare($stmtSalon, $querySalon)) {
+                mysqli_stmt_bind_param($stmtSalon, "s", $salonId);  
+                mysqli_stmt_execute($stmtSalon);
+                $resSalon = mysqli_stmt_get_result($stmtSalon);
+                $salonDetalles = mysqli_fetch_assoc($resSalon);
+            } else {
+                echo "Error al preparar la consulta";
+            }
 
-    $queryImg = "SELECT * FROM imgevents WHERE id_events=?";
-    $stmtImg = mysqli_stmt_init($cnx);
-    if(mysqli_stmt_prepare($stmtImg,$queryImg)){
-      mysqli_stmt_bind_param($stmtImg,"s", $salonId);
-      mysqli_stmt_execute($stmtImg);
-      $resImg=mysqli_stmt_get_result($stmtImg);
-      $imagenes=mysqli_fetch_all($resImg, MYSQLI_ASSOC);
-    }
-    } else {
-        echo "Falta el parámetro 'id'";
-    }
+            $queryImg = "SELECT * FROM imgevents WHERE id_events=?";
+            $stmtImg = mysqli_stmt_init($cnx);
+            if(mysqli_stmt_prepare($stmtImg,$queryImg)){
+            mysqli_stmt_bind_param($stmtImg,"s", $salonId);
+            mysqli_stmt_execute($stmtImg);
+            $resImg=mysqli_stmt_get_result($stmtImg);
+            $imagenes=mysqli_fetch_all($resImg, MYSQLI_ASSOC);
+            }
+            } else {
+                echo "Falta el parámetro 'id'";
+            }
 
-    $queryOwner = "SELECT * FROM owner WHERE id_owner = ?";
-    $stmtOwner = mysqli_stmt_init($cnx);
+            $queryOwner = "SELECT * FROM owner WHERE id_owner = ?";
+            $stmtOwner = mysqli_stmt_init($cnx);
 
-    if (mysqli_stmt_prepare($stmtOwner, $queryOwner)) {
-        $id_owner = $salonDetalles['id_owner']; 
-        mysqli_stmt_bind_param($stmtOwner, "s", $id_owner);
-        mysqli_stmt_execute($stmtOwner);
-        $resOwner = mysqli_stmt_get_result($stmtOwner);
-        $ownerDetalles = mysqli_fetch_assoc($resOwner);
-    } else {
-        echo "Error al preparar la consulta del propietario";
-    }
+            if (mysqli_stmt_prepare($stmtOwner, $queryOwner)) {
+                $id_owner = $salonDetalles['id_owner']; 
+                mysqli_stmt_bind_param($stmtOwner, "s", $id_owner);
+                mysqli_stmt_execute($stmtOwner);
+                $resOwner = mysqli_stmt_get_result($stmtOwner);
+                $ownerDetalles = mysqli_fetch_assoc($resOwner);
+            } else {
+                echo "Error al preparar la consulta del propietario";
+            }
 
-    $queryC = "SELECT * FROM calendar WHERE id_events = ?";
-    $stmtC = mysqli_stmt_init($cnx);
-    if(mysqli_stmt_prepare($stmtC, $queryC)){
-        mysqli_stmt_bind_param($stmtC, "s", $salonId);
-        mysqli_stmt_execute($stmtC);
-        $resC = mysqli_stmt_get_result($stmtC);
-        $calendar=mysqli_fetch_assoc($resC);
-    }
+            $queryC = "SELECT * FROM calendar WHERE id_events = ?";
+            $stmtC = mysqli_stmt_init($cnx);
+            if(mysqli_stmt_prepare($stmtC, $queryC)){
+                mysqli_stmt_bind_param($stmtC, "s", $salonId);
+                mysqli_stmt_execute($stmtC);
+                $resC = mysqli_stmt_get_result($stmtC);
+                $calendar=mysqli_fetch_assoc($resC);
+            }
 
 ?>
 
- <style>
-        .profile-pic {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-    </style>
     <BR></BR>
 
     <div class="container mt-5">
@@ -84,8 +77,13 @@ if (isset($_GET['id'])) {
             <?php } ?>
             <div class="card-body">
                 <hr>
-                <h5 class="card-title text-dark">Administrador</h5>
+                <h5 class="card-title text-dark">
+                    <i class="bi bi-person-circle"></i> Administrador
+                </h5>
                 <p class="card-text text-dark"><?php echo $ownerDetalles['name']. " ". $ownerDetalles['lastname'];?></p>
+                <?php if (!empty($ownerDetalles['ine'])) { ?>
+                    <p class="text-success"><i class="bi bi-person-check-fill"></i> Usuario verificado</p>
+                <?php } ?>
                 <hr>
                 <h5 class="card-title text-dark">
                     <i class="bi bi-list-check"></i> Detalles
@@ -105,11 +103,11 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="d-flex align-items-center mb-3">
                 <a href="<?php echo $salonDetalles['insta']; ?>" target="_blank" class="btn btn-secondary"><i class="bi bi-instagram"></i></a>
-                    <p class="card-text text-dark"><?php echo $salonDetalles['insta'];?></p>
+                    <p class="card-text text-dark">  &nbsp;<?php echo $salonDetalles['insta'];?></p>
                 </div>
                 <hr>
                 <h5 class="card-title text-dark">
-                    <i class="bi bi-geo-alt-fill"></i> Ubicacion
+                    <i class="bi bi-geo-alt-fill"></i> Ubicación
                 </h5>
                 <p class="card-text text-dark"><?php echo $salonDetalles['ubiS'];?></p>
                 <hr>
@@ -123,6 +121,8 @@ if (isset($_GET['id'])) {
                     </ul>
                     <hr>
                 <?php } ?>
+                <hr>
+                <p class="text-success"><i class="bi bi-folder-check"></i> Salón verificado</p>
                 <hr>
             </div>
         </div>

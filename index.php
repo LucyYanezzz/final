@@ -15,6 +15,7 @@ include('admin/config/conex.php');
   include('template/head.php');
 ?>
 
+    
     <!--Hero-->
     <section class="hero">
       <div class="container-fluid my-5 rounded-3 ">
@@ -88,21 +89,9 @@ include('admin/config/conex.php');
                     <img src="<?php echo 'admin/seccion/'.$imagen['img3']; ?>" class="d-block w-100" alt="Otra imagen del salón" />
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
-                  data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
-                  data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
               </div>
               <div class="card-text p-3">
                 <h5 class="card-title fw-bold"><?php echo $salon['nameS']; ?></h5> 
-                
-                <p class="bounce-in-up"><?php echo $salon['descripS']; ?></p>
                 <br>
                 <a href="salonPage.php?id=<?php echo $salon['id_events']; ?>" class="btn btn-sm btn-light" >
                 Visualizar
@@ -161,7 +150,7 @@ include('admin/config/conex.php');
       <div class="box">
         <img src="img/davidsalas.jpeg" alt="" class="yoni">
         <h3>David Salas</h3>
-        <h5>Director de documentacion</h5>
+        <h5>Director de documentación</h5>
         <div class="icons">
           <a href=""><i class="ri-github-line"></i></a>
           <a href=""><i class="ri-instagram-line"></i></a>
@@ -198,4 +187,3 @@ include('admin/config/conex.php');
 </section>
 
 <?php include('template/patita.php'); ?>
-    

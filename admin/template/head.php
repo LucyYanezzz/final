@@ -55,11 +55,6 @@
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
-      <!-- imagen del usuario -->
-      <div class="header_img">
-        <!-- ruta de carpeta + ruta de foto -->
-        <img src="../../uploads/<?php echo $_SESSION['profilePhoto']; ?>" alt="Imagen de usuario" />
-      </div>
     </header>
     <!-- inicia la sidebar -->
     <div class="l-navbar " id="nav-bar"> 
@@ -95,7 +90,7 @@
             </a>
             <a href="<?php echo $url; ?>/admin/seccion/logOut.php" class="nav_link">
              <i class="bx bx-log-out nav_icon" id="log_out"></i>
-              <span class="nav_name">Cerrar Sesion</span>              
+              <span class="nav_name">Cerrar sesión</span>              
             </a>   
             <!-- end lista sidebar -->
         </aside> 

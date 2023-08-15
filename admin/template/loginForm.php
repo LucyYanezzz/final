@@ -69,13 +69,13 @@ if (isset($_COOKIE['login_error'])) {
                             <!-- form -->
                             <form action="login.php" method="post">
                                 <!-- title -->
-                                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inicia sesion</h5>
+                                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inicia sesión</h5>
                                 <!-- mail -->
                                 <div class="d-flex flex-row aling-items-center mb-4">
                                     <i class="bi bi-envelope-fill fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" placeholder="Introduce tu Email:" name="mail" class="form-control" required>
+                                    <label for="email" class="form-label">Correo electrónico</label>
+                                    <input type="email" placeholder="Introduce tu correo electrónico:" name="mail" class="form-control" required>
                                 </div>
                                 </div>
                                 <!-- password -->
@@ -111,7 +111,7 @@ if (isset($_COOKIE['login_error'])) {
         <p class="mb-0 me-2">¿Aún no tienes cuenta?</p>
         <button type="button" class="btn btn-outline-danger">
             <a href="../../public/singUpForm.php" class="link-dark">
-                Registrate
+                Regístrate
             </a>
         </button>
     </div>
@@ -153,5 +153,20 @@ if (isset($_COOKIE['login_error'])) {
 </div>
 <!-- end body and html -->
 </body>
+<!-- loader -->
+<div id="loader" class="loader-container">
+    <img src="../../img/loadinfDEF.gif" alt="Cargando..." class="loader">
+</div>
+<!-- end loader -->
 </html>
+
+<script>
+    window.addEventListener('load', function() {
+  setTimeout(function() {
+      // Oculta el indicador de carga
+      document.getElementById('loader').style.display = 'none';
+  }, 1000); 
+});
+
+</script>
 

@@ -36,8 +36,8 @@
       <thead>
         <tr>
           <th scope="col">Nombre </th>
-          <th scope="col">Descripcion </th>
-          <th scope="col">Ubicacion </th>
+          <th scope="col">Descripción </th>
+          <th scope="col">Ubicación </th>
           <th scope="col">Facebook </th>
           <th scope="col">Instagram </th>
           <th scope="col">Editar</th>
